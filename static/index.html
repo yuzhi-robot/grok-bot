@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>GrokBot — 开源 Grok 风格 AI 聊天机器人</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230a0a0c' stroke='%232dd4bf' stroke-width='3'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">GrokBot</span>
+      <span class="brand-version" id="brandVersion">v1.0</span>
+    </div>
+    <button class="new-chat" id="newChat" type="button">
+      <span class="plus">+</span> 新建对话
+    </button>
+    <div class="conv-list" id="convList" aria-label="会话列表"></div>
+    <div class="sidebar-footer">
+      <div class="provider" id="providerBadge">
+        <span class="dot"></span><span class="provider-text">检测中…</span>
+      </div>
+      <div class="foot-hint" id="footHint"></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="打开会话列表">☰</button>
+      <div class="title-wrap">
+        <h1 class="chat-title" id="chatTitle">新对话</h1>
+        <p class="chat-sub" id="chatSub">Grok 风格 · 流式输出</p>
+      </div>
+      <div class="persona-pills" id="personaPills" role="group" aria-label="人格选择"></div>
+    </header>
+
+    <section class="thread" id="thread" aria-live="polite">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-mark">✳</div>
+        <h2>在线。想问点什么？</h2>
+        <p class="empty-note" id="emptyNote">直说，别客气。</p>
+        <div class="suggestions" id="suggestions">
+          <button type="button" data-prompt="你是谁？你能做什么？">你是谁，能做什么</button>
+          <button type="button" data-prompt="(128 + 72) * 3 等于多少">算一下 (128+72)*3</button>
+          <button type="button" data-prompt="如何把本地 Ollama 接到这个项目？">接入本地 Ollama</button>
+          <button type="button" data-prompt="给我一个 Python 快速排序实现，并说明复杂度">Python 快速排序</button>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+    </section>
+
+    <footer class="composer-wrap">
+      <form class="composer" id="composer">
+        <textarea id="input" rows="1" placeholder="发送消息…（Enter 发送，Shift+Enter 换行）" autocomplete="off"></textarea>
+        <div class="composer-actions">
+          <span class="mode-tag" id="modeTag">demo</span>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="发送">↑</button>
+          <button class="stop-btn" id="stopBtn" type="button" aria-label="停止" hidden>■</button>
+        </div>
+      </form>
+      <p class="disclaimer">非官方开源项目，与 xAI / Grok 无关联。模型输出请自行核实。</p>
+    </footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
